@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Tambah Pengaduan Baru</title>
+</head>
+<body>
+     <h1>Form Pengaduan Baru</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Kirim Pengaduan</button>
+    </form>
+
+    <p><a href="{% url 'pengaduan-list' %}">← Kembali ke Daftar Pengaduan</a></p>
+</body>
+</html>

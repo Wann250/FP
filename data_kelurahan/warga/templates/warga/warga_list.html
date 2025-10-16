@@ -7,13 +7,22 @@
 </head>
 <body>
     <h1>Daftar Warga</h1>
+
+    <a href="{% url 'warga-tambah' %}">Tambah Warga Baru</a>
+    <hr>
+
     <ul>
-        {% for warga in object_list %}
-            <li>{{ warga.nama_lengkap }} - NIK: {{ warga.nik }}</li>
+        {% for warga in warga_list %}
+            <li>
+                <a href="{% url 'warga-detail' warga.pk %}">
+                    {{ warga.nama_lengkap }}
+                </a>
+                - NIK: {{ warga.nik }}
+            </li>
         {% empty %}
             <li>Belum ada data warga yang terdaftar.</li>
         {% endfor %}
-    </ul>   
+    </ul>  
     
     <hr>
     <h2>Daftar Pengaduan oleh {{ object.nama_lengkap }}</h2>
@@ -27,6 +36,7 @@
         <li>Warga ini belum pernah membuat pengaduan.</li>
         {% endfor %}
     </ul>
+
 
 </body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Pengaduan</title>
+</head>
+<body>
+    <h1>Daftar Seluruh Pengaduan</h1>
+
+    {% if pengaduan_list %}
+        <ul>
+            {% for aduan in pengaduan_list %}
+                <li>
+                    <h3>{{ aduan.judul }}</h3>
+                    <p><em>Pelapor:</em> {{ aduan.pelapor.nama_lengkap }} &middot; 
+                       <small>{{ aduan.tanggal_lapor|date:"d M Y H:i" }}</small>
+                    </p>
+                    <p>{{ aduan.deskripsi|linebreaksbr }}</p>
+                    <p><strong>Status:</strong> {{ aduan.get_status_display }}</p>
+                    <hr>
+                </li>
+            {% endfor %}
+        </ul>
+
+    <p><a href="{% url 'warga-list' %}">← Kembali ke Daftar Warga</a></p>
+</body>
+</html>
