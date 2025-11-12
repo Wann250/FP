@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>Tambah Pengaduan Baru</title>
 </head>
 <body>
-     <h1>Form Pengaduan Baru</h1>
+    <h1>Form Tambah Pengaduan</h1>
+    <a href="{% url 'pengaduan-list' %}">← Kembali ke Daftar Pengaduan</a>
+    <hr>
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Kirim Pengaduan</button>
     </form>
-
-    <p><a href="{% url 'pengaduan-list' %}">← Kembali ke Daftar Pengaduan</a></p>
 </body>
 </html>

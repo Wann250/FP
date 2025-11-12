@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detail Warga - {{ object.nama_lengkap }}</title>
+</head>
+<body>
+    <h1>Detail Data Warga</h1>
+
+    <p><strong>Nama Lengkap:</strong> {{ object.nama_lengkap }}</p>
+    <p><strong>NIK:</strong> {{ object.nik }}</p>
+    <p><strong>Alamat:</strong> {{ object.alamat }}</p>
+    <p><strong>No. Telepon:</strong> {{ object.no_telepon }}</p>
+    <p><strong>Tanggal Registrasi:</strong> {{ object.tanggal_registrasi }}</p>
+
+    <hr>
+
+    <h2>Daftar Pengaduan:</h2>
+    <ul>
+        {% for pengaduan in object.pengaduan_set.all %}
+        <li>
+            <strong>{{ pengaduan.judul }}</strong> - {{ pengaduan.get_status_display }}
+            <br>
+            {{ pengaduan.deskripsi }}
+            <br>
+            <a href="{% url 'pengaduan-edit' pengaduan.pk %}">Edit</a> |
+            <a href="{% url 'pengaduan-hapus' pengaduan.pk %}">Hapus</a>
+        </li>
+        <hr>
+        {% empty %}
+        <li>Tidak ada pengaduan yang dibuat oleh warga ini.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'warga-list' %}">← Kembali ke Daftar Warga</a>
+</body>
+</html>
