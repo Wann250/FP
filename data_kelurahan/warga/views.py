@@ -4,7 +4,7 @@ from .models import Warga, Pengaduan
 from django.urls import reverse_lazy
 from .forms import WargaForm, PengaduanForm
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from .serializers import WargaSerializer
+from .serializers import WargaSerializer, PengaduanSerializer
 # Create your views here.
 
 class WargaListView(ListView):
@@ -59,3 +59,11 @@ class WargaListAPIView(ListAPIView):
 class WargaDetailAPIView(RetrieveAPIView):
     queryset = Warga.objects.all()
     serializer_class = WargaSerializer
+
+class PengaduanListAPIView(ListAPIView):
+    queryset = Pengaduan.objects.all()
+    serializer_class = PengaduanSerializer
+
+class PengaduanDetailAPIView(RetrieveAPIView):
+    queryset = Pengaduan.objects.all()
+    serializer_class = PengaduanSerializer
